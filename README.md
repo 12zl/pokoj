@@ -6,26 +6,22 @@ Czat ze znajomymi bez konta, przygotowany do GitHub Pages. Domyślnie czarny mot
 
 1. Utwórz nowe publiczne repozytorium, np. `pokoj`.
 2. Wgraj **zawartość tego folderu** do głównego katalogu repozytorium. `index.html` ma być na wierzchu, razem z `app.js`, `style.css` i folderami `vendor` i `stickers`.
-3. W repozytorium otwórz **Settings → Pages**. W sekcji Build and deployment wybierz **Deploy from a branch**, następnie **main** i **/(root)**. Kliknij Save.
+3. W repozytorium otwórz **Settings → Pages**. W sekcji Build and deployment wybierz **GitHub Actions**. Wgraj również folder `.github`, który odpowiada za publikację i automatyczne wykrywanie naklejek.
 4. GitHub wyświetli adres opublikowanej strony. Otwórz go, wpisz nick i wybierz Stwórz pokój. Przycisk Kopiuj zaproszenie daje link dla znajomych.
 
-Strona nie wymaga budowania ani tajnych kluczy. Linki do pokoju używają fragmentu `#`, więc działają również w podkatalogu GitHub Pages.
+GitHub sam przygotowuje i publikuje stronę po każdej zmianie na `main`. Nie potrzebujesz tajnych kluczy ani dodatkowego konta. Linki do pokoju używają fragmentu `#`, więc działają również w podkatalogu GitHub Pages.
 
 ## Własne naklejki
 
-1. Wgraj obrazek do folderu `stickers`, np. `kot.webp`. Obsługiwane: PNG, WEBP, GIF, JPG. Przezroczysty WEBP lub PNG zwykle wygląda najlepiej. Zalecane 256 × 256 px i plik poniżej 300 KB.
-2. Edytuj `stickers/manifest.json`. Zastąp pustą listę `[]` na przykład taką:
+**Po prostu wrzuć obrazki lub GIF-y — lista tworzy się sama.**
 
-```json
-[
-  { "id": "kot-szef", "name": "Kot szef", "file": "kot.webp" },
-  { "id": "taniec", "name": "Taniec", "file": "taniec.gif" }
-]
-```
+1. Otwórz [folder stickers](https://github.com/12zl/pokoj/tree/main/stickers).
+2. Kliknij **Add file → Upload files**, przeciągnij obrazki i kliknij **Commit changes**. Możesz wrzucić wiele naraz.
+3. Poczekaj na ukończenie publikacji (zwykle 1–2 minuty), a następnie odśwież czat. Naklejki pojawią się pod **ikona buźki → Naklejki**. Znajomi również powinni odświeżyć stronę po dodaniu nowych plików.
 
-3. Zapisz zmiany na GitHubie. Po ponownej publikacji odśwież stronę. Obrazki pojawią się pod **ikona buźki → Naklejki**.
+Obsługiwane pliki: **PNG, WEBP, GIF, JPG i JPEG**. GIF-y zachowują animację. Nazwa naklejki powstaje z nazwy pliku; spacje, polskie znaki i emoji są dozwolone. Umieszczaj pliki bezpośrednio w `stickers`, nie w podfolderach. Zalecane około 256 × 256 px i niewielkie pliki. Maksymalnie 80 własnych naklejek; przekroczenie limitu zatrzyma publikację, pozostawiając ostatnią działającą wersję strony.
 
-Nazwy plików: bez spacji i polskich znaków, wyłącznie litery, cyfry, myślnik lub podkreślenie. Każda naklejka musi mieć unikalne `id`; nie używaj zarezerwowanych `frog`, `party`, `love`, `alien`, `fire`, `cat`. Nie dodawaj przecinka po ostatnim elemencie listy. Maksymalnie 80 własnych naklejek. Sześć startowych naklejek emoji działa bez obrazków.
+Nie edytuj `manifest.json`: podczas publikacji jest automatycznie generowany na podstawie obrazków. Usunięcie pliku usuwa naklejkę przy następnej publikacji. Sześć startowych naklejek emoji jest dostępnych niezależnie od wgranych plików.
 
 ## Jak działa pokój
 
@@ -43,10 +39,12 @@ Nazwy plików: bez spacji i polskich znaków, wyłącznie litery, cyfry, myślni
 - `index.html` — interfejs.
 - `style.css` — wygląd, motywy, animacje i układ mobilny.
 - `app.js` — profil, pokój, połączenia i wiadomości.
-- `stickers/manifest.json` — lista Twoich naklejek.
+- `stickers/` — tutaj wrzucasz własne obrazki i GIF-y.
+- `.github/scripts/build-site.cjs` — automatycznie tworzy katalog naklejek i stronę w `_site`.
+- `.github/workflows/pages.yml` — publikuje stronę po zapisaniu zmian.
 - `vendor/peerjs.min.js` — lokalna kopia biblioteki PeerJS.
 
-Do lokalnego podglądu użyj dowolnego serwera plików statycznych, np. rozszerzenia Live Server w edytorze. Nie otwieraj przez `file://`, ponieważ lista naklejek wymaga HTTP. Produkcyjnie używaj HTTPS (GitHub Pages je zapewnia).
+Do lokalnego podglądu z własnymi naklejkami uruchom `node .github/scripts/build-site.cjs`, a następnie serwuj folder `_site` dowolnym serwerem plików statycznych. Nie otwieraj przez `file://`, ponieważ lista naklejek wymaga HTTP. Produkcyjnie używaj HTTPS (GitHub Pages je zapewnia).
 
 ## Dalsze pomysły
 
