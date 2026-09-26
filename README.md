@@ -2,6 +2,8 @@
 
 Czat ze znajomymi bez konta, przygotowany do GitHub Pages. Domyślnie czarny motyw, opcjonalnie biały. Nick, kolor, sześć awatarów i własne zdjęcie, emotki, naklejki, lista uczestników oraz animowany wskaźnik pisania.
 
+Wiadomości pokazują, kto je odczytał. Możesz kopiować tekst, reagować sercem lub inną emotką, wysyłać zdjęcia i pliki, a także wkleić kod HTML, CSS, JS, JSON lub Python z numerami linii, kolorowaniem, kopiowaniem i pobieraniem. Pliki można wybrać przez spinacz albo przeciągnąć do czatu.
+
 ## Uruchomienie na GitHubie
 
 1. Utwórz nowe publiczne repozytorium, np. `pokoj`.
@@ -23,6 +25,15 @@ Obsługiwane pliki: **PNG, WEBP, GIF, JPG i JPEG**. GIF-y zachowują animację. 
 
 Nie edytuj `manifest.json`: podczas publikacji jest automatycznie generowany na podstawie obrazków. Usunięcie pliku usuwa naklejkę przy następnej publikacji. Sześć startowych naklejek emoji jest dostępnych niezależnie od wgranych plików.
 
+W trakcie rozmowy możesz też kliknąć **buźka → Naklejki → Dodaj własne zdjęcie / GIF**. Te naklejki zapisują się w Twojej przeglądarce i możesz wysyłać je ponownie bez GitHuba. Znajomi widzą wysłaną naklejkę, ale nie dodaje się ona do ich osobistej kolekcji.
+
+## Pliki, odczyty i kod
+
+- Jednorazowy plik ma limit 3 MB. Jest przesyłany przez przeglądarkę gospodarza i nie trafia na GitHub ani do trwałego magazynu. Przy bardzo dużych plikach lub słabym połączeniu przesłanie może się nie udać.
+- Osoba, która dołącza później, dostaje historię wiadomości. Załączniki mogą być przez chwilę niedostępne, dopóki gospodarz nie prześle ich ponownie. Po zamknięciu pokoju pliki i historia znikają z aplikacji.
+- Odczyt liczy się, gdy wiadomość jest widoczna w aktywnej karcie. Przyciskiem 👁 można zobaczyć nicki. To informacja o wyświetleniu, nie gwarancja, że ktoś przeczytał treść.
+- Kod do 20 000 znaków ma zachowane wcięcia, numerację, kolorowanie, kopiowanie i pobieranie z odpowiednim rozszerzeniem.
+
 ## Jak działa pokój
 
 - Połączenia WebRTC przez PeerJS 1.5.5. Publiczny PeerServer Cloud pomaga przeglądarkom się odnaleźć. Wiadomości są przekazywane przez przeglądarkę gospodarza pozostałym uczestnikom.
@@ -39,6 +50,7 @@ Nie edytuj `manifest.json`: podczas publikacji jest automatycznie generowany na 
 - `index.html` — interfejs.
 - `style.css` — wygląd, motywy, animacje i układ mobilny.
 - `app.js` — profil, pokój, połączenia i wiadomości.
+- `extras.js` — odczyty, reakcje, załączniki, własne naklejki i bloki kodu.
 - `stickers/` — tutaj wrzucasz własne obrazki i GIF-y.
 - `.github/scripts/build-site.cjs` — automatycznie tworzy katalog naklejek i stronę w `_site`.
 - `.github/workflows/pages.yml` — publikuje stronę po zapisaniu zmian.

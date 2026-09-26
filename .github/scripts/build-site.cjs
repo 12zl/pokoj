@@ -15,7 +15,7 @@ function buildSite(root) {
   }
   fs.rmSync(output, { recursive: true, force: true });
   fs.mkdirSync(path.join(output, 'stickers'), { recursive: true });
-  for (const file of ['index.html', 'style.css', 'app.js', '.nojekyll']) {
+  for (const file of ['index.html', 'style.css', 'app.js', 'extras.js', '.nojekyll']) {
     fs.copyFileSync(path.join(root, file), path.join(output, file));
   }
   fs.cpSync(path.join(root, 'vendor'), path.join(output, 'vendor'), { recursive: true });
