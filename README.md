@@ -39,7 +39,7 @@ W trakcie rozmowy możesz też kliknąć **buźka → Naklejki → Dodaj własne
 - Połączenia WebRTC przez PeerJS 1.5.5. Publiczny PeerServer Cloud pomaga przeglądarkom się odnaleźć. Wiadomości są przekazywane przez przeglądarkę gospodarza pozostałym uczestnikom.
 - **Gospodarz musi mieć otwartą kartę.** Jej zamknięcie, uśpienie urządzenia lub utrata internetu może zakończyć pokój. Brak automatycznej zmiany gospodarza.
 - Do 12 osób. Nowa osoba otrzymuje ostatnie 100 wiadomości z pamięci gospodarza. Widok pokazuje maksymalnie 200 wiadomości. Po zamknięciu pokoju historia nie jest przechowywana przez aplikację.
-- Każdy, kto ma kod lub link, może wejść. To nie jest system uwierzytelniania — nicki nie potwierdzają tożsamości. Kod ma 12 losowych znaków. Nie publikuj linku do prywatnej rozmowy.
+- Każdy, kto ma kod lub link, może wejść. To nie jest system uwierzytelniania — nicki nie potwierdzają tożsamości. Nowe pokoje mają łatwy kod z 6 cyfr. Stare linki z 12 znakami nadal są obsługiwane. Nie publikuj linku do prywatnej rozmowy.
 - WebRTC szyfruje transport; gospodarz odczytuje i przekazuje wiadomości. Nie jest to szyfrowanie end-to-end między wszystkimi uczestnikami z pominięciem gospodarza.
 - Profil i motyw zapisują się lokalnie w przeglądarce. Zdjęcie jest kadrowane do kwadratu i zmniejszane do 128 × 128 px przed przesłaniem znajomym. Wiadomości nie są zapisywane w localStorage.
 - Niektóre sieci szkolne, firmowe lub restrykcyjne sieci mobilne mogą blokować połączenia bezpośrednie. Do niezawodnej pracy w takich sieciach potrzebny jest własny TURN lub wersja z serwerem czatu. Publiczny PeerServer to usługa zewnętrzna, której dostępności ten projekt nie gwarantuje.
@@ -66,3 +66,9 @@ Hasło i zatwierdzanie wejścia przez gospodarza, reakcje emoji, odpowiedzi na k
 
 [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages), [PeerJS](https://peerjs.com/client/getting-started), [ograniczenia WebRTC](https://peerjs.com/client/faq).
 PeerJS jest udostępniony na licencji MIT — zobacz `vendor/PEERJS-LICENSE`. Kroje DM Sans i Space Grotesk pobierane są z Google Fonts, z lokalnym krojem zastępczym, gdy usługa jest niedostępna.
+
+## Odpowiedzi i szybkie kody
+
+Przycisk **↩ Odpowiedz** przy wiadomości wybiera cytat. Napisz odpowiedź; kliknięcie cytatu przenosi do oryginału. Krzyżyk nad polem pisania anuluje odpowiedź. Odpowiadać można także kodem, zdjęciem, plikiem lub naklejką.
+
+Nowe pokoje mają kod z **6 cyfr**, np. `123456`. Kliknięcie kodu w pokoju kopiuje go. Na telefonie pole dołączania otwiera klawiaturę numeryczną. Gdy losowy kod jest już zajęty, strona automatycznie wybiera kolejny.
